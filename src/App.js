@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    data: null
+  }
+  
+  componentDidMount() {
+    axios
+      .get("https://api.mlab.com/api/1/databases/lsat-questions/collections/logical-reasoning?apiKey=4iNzXeCdeXqVTbvK2ke2xpM8FoxnPkxD")
+      .then((response) => {
+        this.setState({data: response});
+        console.log(response);
+          }
+        )
+    }
+  
+  render() {
+    return (
+      <div>
+        
+      </div>
+    );    
+    
+  }
+
 }
 
 export default App;
